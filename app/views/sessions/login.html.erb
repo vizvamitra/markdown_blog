@@ -1,0 +1,21 @@
+<h1>Вход</h1>
+
+<% if flash[:alert] %>
+  <p style="color:red;"><%= flash[:alert] %></p>
+<% end %>
+
+<fieldset>
+  <%= form_for @user, url: login_path do |f| %>
+    <div>
+      <%= f.label "Логин:" %>
+      <%= f.text_field :name %><br/>
+    </div>
+    <div>
+      <%= f.label "Пароль:" %>
+      <%= f.password_field :password %><br/>
+    </div>
+    <div>
+      <%= f.submit "Войти" %>
+    </div>
+  <% end %>
+</fieldset>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Midispot</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<footer>
+  <% if session[:user_name] %>
+    Вы вошли как <%= session[:user_name] %>
+    (<%= link_to 'Выйти', login_path, method: 'DELETE' %>)
+  <% else %>
+    <%= link_to 'Вход', login_path  %>
+  <% end %>
+</footer>
+</body>
+</html>
