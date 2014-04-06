@@ -4,7 +4,7 @@ class Post
   field :author, type: String
   field :title, type: String
   field :body, type: String
-  field :tags, type: Array
+  field :tags, type: Array, default: []
   field :published, type: Mongoid::Boolean, default: false
   field :permalink, type: String
 

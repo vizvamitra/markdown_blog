@@ -7,16 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <%= link_to "Блог", posts_path %>
+  </header>
 
-<%= yield %>
+  <div id='wrapper'>
+    <div id='buffer_top'></div>
 
-<footer>
-  <% if session[:user_name] %>
-    Вы вошли как <%= session[:user_name] %>
-    (<%= link_to 'Выйти', login_path, method: 'DELETE' %>)
-  <% else %>
-    <%= link_to 'Вход', login_path  %>
-  <% end %>
-</footer>
+    <section id='main'>
+      <%= yield %>
+    </section>
+
+    <div id='buffer_bottom'></div>
+  </div>
+  
+  <footer>
+    <span>
+      <% if session[:user_name] %>
+        Вы вошли как <%= session[:user_name].capitalize %>
+        (<%= link_to 'Выйти', login_path, method: 'DELETE' %>)
+      <% else %>
+        <%= link_to 'Вход', login_path  %>
+      <% end %>
+    </span>
+  </footer>
 </body>
 </html>

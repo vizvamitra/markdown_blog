@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def index
     filter = {tags: params[:tag]} if params[:tag]
     @posts = Post.where(filter).order_by([:created_at, :desc]).limit(10)
+    @tags = get_tags.sort{|t1,t2| t1['_id'] <=> t2['_id']}
   end
 
   # GET /posts/:permalink
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
       title: post_data[:title],
       body: post_data[:body],
       author: session[:user_name],
-      tags: post_data[:tags].split(/\s*,\s*/),
+      tags: post_data[:tags].split(/\s*,\s*/).map{|t|t.strip},
       permalink: make_permalink(post_data[:title])
     }
 
@@ -43,8 +44,13 @@ class PostsController < ApplicationController
 
   # PATCH /posts/:permalink
   def update
-    title = post_params
-    @post.attributes = post_params
+    post_data = post_params
+    @post.attributes = {
+      title: post_data[:title],
+      body: post_data[:body],
+      tags: post_data[:tags].split(/\s*,\s*/).map{|t|t.strip},
+      permalink: make_permalink(post_data[:title])
+    }
 
     if @post.save
       redirect_to posts_path
@@ -75,4 +81,25 @@ class PostsController < ApplicationController
     escaped_title = escaped_title.gsub(/[^-\w\s!_]/,'').gsub(/\s/, '_')
     "#{Time.now.to_i}_#{escaped_title}"
   end
+
+  def get_tags
+    map = %Q{
+      function(){
+        this.tags.forEach(function(z){
+          emit(z,1)
+        })
+      }
+    }
+    reduce = %Q{
+      function (key,values){
+        var total=0;
+        for(var i=0;i<values.length;i++){
+          total += values[i];
+        };
+        return total;
+      }
+    }
+    Post.where(:tags.exists=>true).map_reduce(map,reduce).out(inline: true)
+  end
+
 end

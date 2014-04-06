@@ -1,26 +1,40 @@
-<h1>Посты</h1>
+<div id='blog'>
+  <div id='posts'>
+    <h1>Посты</h1>
 
-<%= link_to "Новый", new_post_path if session[:user_name] %>
+    <%= link_to "Новый", new_post_path if session[:user_name] %>
 
-<% @posts.each do |post| %>
-  <hr/>
-  <div>
-    <h3><%= link_to post.title, post %></h3>
-    <div>
-      Автор: <%= post.author %> |
-      Добавлен: <%= pubdate(post) %>
-      <% if session[:user_name] %> 
-        | <%= link_to 'Редактировать', edit_post_path(post) %> | 
-        <%= link_to 'Удалить', post, method: 'DELETE' %>
-      <% end %>
-    </div>
-    <p><%= post.body %></p>
-    <% if post.tags %>
-      <span>
-        <% post.tags.each do |tag| %>
-          <%= link_to '#'+tag, posts_path(tag: tag) %>
+    <% @posts.each do |post| %>
+      <hr/>
+      <div>
+        <h3><%= link_to post.title, post %></h3>
+        <div>
+          Автор: <%= post.author %> |
+          Добавлен: <%= pubdate(post) %>
+          <% if session[:user_name] %> 
+            | <%= link_to 'Редактировать', edit_post_path(post) %> | 
+            <%= link_to 'Удалить', post, method: 'DELETE' %>
+          <% end %>
+        </div>
+        <pre><%= post.body %></pre>
+        <% if post.tags %>
+          <span>
+            <% post.tags.each do |tag| %>
+              <%= link_to '#'+tag, posts_path(tag: tag) %>
+            <% end %>
+          </span>
         <% end %>
-      </span>
+      </div>
     <% end %>
   </div>
-<% end %>
+
+  <div id='tags'>
+    <h3>Тэги</h3>
+    <ul>
+      <p><%= link_to "Все посты", posts_path %></p><br/>
+      <% @tags.each do |tag| %>
+        <li><%= link_to '#'+tag['_id'], posts_path(tag: tag['_id']) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

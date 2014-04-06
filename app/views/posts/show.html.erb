@@ -1,14 +1,16 @@
-<h3><%= @post.title %></h3>
+<div id='post'>
+  <h3><%= @post.title %></h3>
 
-<div>
-  Автор: <%= @post.author %> |
-  Добавлен: <%= pubdate(@post) %>
-  <% if session[:user_name] %> 
-    | <%= link_to 'Редактировать', edit_post_path(@post) %> | 
-    <%= link_to 'Удалить', @post, method: 'DELETE' %>
-  <% end %>
+  <div>
+    Автор: <%= @post.author %> |
+    Добавлен: <%= pubdate(@post) %>
+    <% if session[:user_name] %> 
+      | <%= link_to 'Редактировать', edit_post_path(@post) %> | 
+      <%= link_to 'Удалить', @post, method: 'DELETE' %>
+    <% end %>
+  </div>
+
+  <p><%= @post.body %></p>
+
+  <%= link_to 'Назад', posts_path %>
 </div>
-
-<p><%= @post.body %></p>
-
-<%= link_to 'Назад', posts_path %>
