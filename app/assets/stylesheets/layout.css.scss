@@ -1,9 +1,12 @@
 h1, h2, h3, h4, h5, h6, p, body {
   margin:0;
+  word-wrap:normal;
 }
 
 html, body{
   height: 100%;
+  background: url('/assets/background_2_bright.jpg');
+  background-attachment: fixed;
 }
 
 #wrapper{
@@ -17,7 +20,7 @@ html, body{
 }
 
 header{
-  background-color: #444;
+  background-color: rgba(68,68,68,0.9);
 
   a{    
     display: inline-block;
@@ -29,10 +32,10 @@ header{
     padding: 0.8em;
     width: auto;
     text-align: center;
-    border-right: 1px solid #606060;
+    border-right: 1px solid rgba(96,96,96,1);
     transition: 0.4s;
   }
-  a:hover{background-color:#606060;}
+  a:hover{background-color:rgba(96,96,96,0.9);}
 }
 
 #main{
@@ -44,7 +47,7 @@ header{
 }
 
 footer{
-  background-color: #444;
+  background-color: rgba(50,50,50,0.9);
   overflow: auto;
   width: 100%;
   height: 3em;

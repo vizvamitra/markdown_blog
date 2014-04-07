@@ -6,7 +6,7 @@
 
     <% @posts.each do |post| %>
       <hr/>
-      <div>
+      <div id='post'>
         <h3><%= link_to post.title, post %></h3>
         <div>
           Автор: <%= post.author %> |
@@ -26,6 +26,11 @@
         <% end %>
       </div>
     <% end %>
+
+    <div id='page_links'>
+      <%= link_to"← Предыдущие", posts_path(page: @next_page) if @next_page%>
+      <%= link_to "Следующие →", posts_path(page: @prev_page) if @prev_page%>
+    </div>
   </div>
 
   <div id='tags'>
@@ -33,7 +38,7 @@
     <ul>
       <p><%= link_to "Все посты", posts_path %></p><br/>
       <% @tags.each do |tag| %>
-        <li><%= link_to '#'+tag['_id'], posts_path(tag: tag['_id']) %></li>
+        <li><%= link_to "##{tag['_id']} (#{tag['value'].to_i})", posts_path(tag: tag['_id']) %></li>
       <% end %>
     </ul>
   </div>

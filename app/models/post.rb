@@ -17,4 +17,10 @@ class Post
   def to_param
     self.permalink
   end
+
+  def self.num_pages(per_page)
+    raise ArgumentError, '1 post per page minimum' if per_page < 1
+    pages = self.count.to_f/per_page.to_i
+    pages > pages.to_i ? pages.to_i + 1 : pages.to_i
+  end
 end
