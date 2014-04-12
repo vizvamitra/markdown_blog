@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
       redirect_to posts_url, notice: "Доступ запрещён"
     end
   end
+
+  def authorized?
+    session[:user_name]
+  end
 end

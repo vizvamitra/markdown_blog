@@ -6,6 +6,7 @@ class Post
   field :body, type: String
   field :tags, type: Array, default: []
   field :published, type: Mongoid::Boolean, default: false
+  field :markdown, type: Integer, default: 0
   field :permalink, type: String
 
   validates_presence_of :title, :body, :permalink, :author
@@ -18,9 +19,35 @@ class Post
     self.permalink
   end
 
-  def self.num_pages(per_page)
+  def get_body
+    self.markdown.to_i.zero? ? self.body : RDiscount.new(self.body).to_html
+  end
+
+  def self.num_pages(per_page, tag=nil)
     raise ArgumentError, '1 post per page minimum' if per_page < 1
-    pages = self.count.to_f/per_page.to_i
+    filter = {tags: tag} if tag
+    pages = self.where(filter).count.to_f/per_page.to_i
     pages > pages.to_i ? pages.to_i + 1 : pages.to_i
+  end
+
+  def self.get_tags
+    map = %Q{
+      function(){
+        this.tags.forEach(function(z){
+          emit(z,1)
+        })
+      }
+    }
+    reduce = %Q{
+      function (key,values){
+        var total=0;
+        for(var i=0;i<values.length;i++){
+          total += values[i];
+        };
+        return total;
+      }
+    }
+    tags = self.where(:tags.exists=>true).map_reduce(map,reduce).out(inline: true)
+    tags.sort{|t1,t2| t1['_id'] <=> t2['_id']}
   end
 end

@@ -1,0 +1,19 @@
+<%= form_for [@post, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="errorExplanation">
+      <% @comment.errors.full_messages.each do |msg| %>
+          <h4><%= msg %></h4>
+      <% end %>
+    </div>
+  <% end %>
+  <span id='error'></span>
+  <fieldset>
+    <legend>Новый комментарий</legend>
+    <%= f.label '*Автор: ' %>
+    <%= f.text_field :author%><br/>
+    <%= f.label 'Email: ' %>
+    <%= f.text_field :email %><br/>
+    <%= f.text_area :body %><br/>
+    <%= f.submit 'Добавить' %>
+  </fieldset>
+<% end %>

@@ -1,6 +1,15 @@
 Midispot::Application.routes.draw do
 
+  root 'posts#index'
+
   resources :posts
+  get 'drafts' => 'posts#drafts', as: 'drafts'
+
+  controller :comments do
+    post "posts/:permalink/comments" => :add, as: 'post_comments'
+    patch "posts/:permalink/comments" => :update
+    delete "posts/:permalink/comments" => :delete
+  end
 
   controller :sessions do
     get   '/login' => :login, as: 'login'

@@ -1,15 +1,6 @@
 <div id='blog'>
-  <div id='tags'>
-    <ul>
-      <p><%= link_to "Все посты", posts_path %></p>
-      <% @tags.each do |tag| %>
-        <li><%= link_to "##{tag['_id']} (#{tag['value'].to_i})", posts_path(tag: tag['_id']) %></li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div id='posts'>
-    <h1>Приют программиста</h1>
+  <div id='drafts'>
+    <h1>Черновики</h1>
 
     <% if session[:user_name] %>
       <%= link_to "Новый", new_post_path %> | 
@@ -17,21 +8,18 @@
       <%= link_to "Черновики", drafts_path %>
     <% end %>
 
-    <hr/>
-
     <% @posts.each do |post| %>
+      <hr/>
       <div class='post'>
-        <h3><%= link_to post.title, post %></h3>
-        <div class='info'>
+        <h3><%= link_to post.title, post %></h3> (
+        <span class='info'>
           Автор: <%= post.author.capitalize %> |
           Добавлен: <%= pubdate(post) %>
           <% if session[:user_name] %> 
             | <%= link_to 'Редактировать', edit_post_path(post) %> | 
-            <%= link_to 'Удалить', post, method: 'DELETE', data: {confirm: "Вы уверены?"} %>
+            <%= link_to 'Удалить', post, method: 'DELETE', confirm: "Вы уверены?" %>
           <% end %>
-        </div>
-
-        <div class='post_body'><%= raw post.get_body %></div>
+        </span>)
 
         <% if post.tags %>
           <div class='tags'>
@@ -40,7 +28,6 @@
             <% end %>
           </div>
         <% end %>
-        <%= link_to "Комментировать (#{post.comments.count})", post_path(post, anchor: 'comments'), class: 'to_comments' %>
       </div>
     <% end %>
 

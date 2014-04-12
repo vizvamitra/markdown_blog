@@ -1,21 +1,19 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-div, pre{border-radius: 5px;}
 
 #blog{
-  margin-top: 1em;
+  margin: 1em auto;
   overflow: auto;
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  background-color: rgba(50,50,50,0.1);
-  pre{background-color: rgba(255,255,255,0.3);}
-  a:hover{color: rgba(0,0,0,0.6);}
+  background-color: rgba(0,0,0,0.15);
+  box-shadow: 0 0 8px #000;
+  a:hover{color: rgba(50,50,50,0.5)}
+  hr{border:1px solid rgba(0,0,0,0.6);}
 
-  #posts{
-    float:left;
-    width:80%;
+  #posts, #drafts{
     padding: 1%;
     overflow: auto;
 
@@ -23,6 +21,21 @@ div, pre{border-radius: 5px;}
       width: 100%;
       text-align: center;
     }
+
+    h1:first-of-type{
+      text-align: center;
+      padding: 1%;
+      background-color: rgba(0,0,0,0.4);
+      box-shadow: 2px 2px 5px #000;
+      color: white;
+      text-shadow: 0 0 2px #000;
+      margin-bottom: 1%;
+    }
+  }
+
+  #posts {
+    float:left;
+    width:80%;
   }
 
   #tags{
@@ -33,6 +46,180 @@ div, pre{border-radius: 5px;}
   }
 }
 
-#post, #login, #new_post, #edit_post{
+.post, #login, #new_post, #edit_post{
   padding: 1%;
+}
+
+#posts .info, .post .info{
+  margin-bottom: 1%;
+}
+
+#drafts .post h3:first-of-type{
+  display: inline;
+}
+
+.post, #post{
+  box-shadow: 2px 2px 5px #000;
+  background-color: rgba(0,0,0,0.4);
+
+  a{ 
+    color: #ccc;
+    text-shadow: 0 0 2px #000;
+  }
+  a:hover{
+    color: white !important;
+  }
+
+  .info {
+    font-size: 0.9em;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+  }
+
+  .post_body{
+    font-size: 1.1em;    
+    padding: 1%;
+    color: #fff;
+    text-shadow: 0 0 2px #000;    
+    margin-bottom: 1%;
+
+    :not(pre) code{
+      background-color: black;
+      color: white;
+      padding: 1px;
+      display: inline-block;
+      margin: 1px;
+    }
+
+    pre code{
+      padding: 0.7em;
+      margin: 0.7em auto;
+      box-shadow: inset 0 0 2px #8af;
+    }
+
+    blockquote{
+      border-left: 4px solid rgba(0,0,0,0.8);
+    }
+  }
+}
+
+.post{
+  margin-top:2%;
+
+  a.to_comments{
+    font-size: 1.1em;
+  }
+}
+
+#post{
+  margin:1%;
+  padding:1%;
+
+  h3 {color: white; text-shadow: 0 0 2px #000}
+}
+
+#comments{
+  padding: 1%;
+}
+
+.post_form{
+  margin-top: 1%;
+  background-color: rgba(0,0,0,0.5);
+  padding: 1%;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  box-shadow: 2px 2px 8px #000;
+  margin-bottom: 1%;
+
+  a{ 
+    color: #ccc !important;
+    text-shadow: 0 0 2px #000;
+  }
+  a:hover{
+    color: white !important;
+  }
+
+  #post_title{
+    width: 99%;
+    border: none;
+    padding: 0.5%;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    box-shadow: 2px 2px 8px #000;
+    margin-bottom: 1%;
+  }
+
+  #post_body{
+    width: 99%;
+    border: none;
+    padding: 0.5%;
+    min-height: 300px;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    box-shadow: 2px 2px 8px #000;
+    overflow: auto;
+  }
+
+  #post_tags{
+    width: 99%;
+    border: none;
+    padding: 0.5%;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    box-shadow: 2px 2px 8px #000;
+  }
+  input[type=submit]{
+    margin-top:1%;
+    background-color: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    text-shadow: 0 0 2px #000;
+    box-shadow: 2px 2px 8px #000;
+    padding: 1%;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin:1% 0 0 0;
+  }
+
+}
+
+pre{
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+#markdown_help{
+  display: none;
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+
+  textarea{
+    resize: none;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    width: 98%;
+    height: 98%;
+    border: none;
+    padding: 1%;
+  }
+}
+
+@media screen and (max-width: 700px){
+  #tags{
+    width: 98% !important;
+
+    ul li{
+      display: inline;
+    }
+  }
+  #posts{
+    width:98% !important;
+  }
 }

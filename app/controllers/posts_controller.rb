@@ -7,24 +7,32 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    num_pages = Post.num_pages(PER_PAGE)
-    n_skip = 0
-    if (page=params[:page].to_i) <= num_pages
-      page = 1 if page.zero?
-      @next_page = page + 1 if page < num_pages
-      n_skip = (page-1) * PER_PAGE if page > 0
-      @prev_page = page-1 if page > 1
-    else
-      redirect_to posts_path
+    filter = {published: true}
+
+    # processing tag if given
+    tag = {}
+    if params[:tag]
+      filter.merge!({tags: params[:tag]})
+      tag = {tag: params[:tag]}
     end
-      
-    filter = {tags: params[:tag]} if params[:tag]
+
+    n_skip = set_page_info
     @posts = Post.where(filter).order_by([:created_at, :desc]).limit(PER_PAGE).skip(n_skip)
-    @tags = get_tags.sort{|t1,t2| t1['_id'] <=> t2['_id']}
+
+    @tags = Post.get_tags
+  end
+
+  # GET /posts/drafts
+  def drafts
+    filter = {author: session[:user_name], published: false}
+    n_skip = set_page_info
+    @posts = Post.where(filter).order_by([:created_at, :desc]).limit(PER_PAGE).skip(n_skip)
   end
 
   # GET /posts/:permalink
   def show
+    @comment = Comment.new
+    @comment.author = session[:user_name].capitalize if authorized?
   end
 
   # GET /posts/new
@@ -47,6 +55,8 @@ class PostsController < ApplicationController
       tags: post_data[:tags].split(/\s*,\s*/).map!{|t|t.strip.mb_chars.downcase.to_s},
       permalink: make_permalink(post_data[:title])
     }
+    @post.markdown = post_data[:markdown].to_i.zero? ? 0 : 1
+    @post.published = post_data[:published].to_i.zero? ? false : true
 
     if @post.save
       redirect_to posts_path
@@ -64,6 +74,8 @@ class PostsController < ApplicationController
       tags: post_data[:tags].split(/\s*,\s*/).map{|t|t.strip.mb_chars.downcase.to_s},
       permalink: make_permalink(post_data[:title])
     }
+    @post.markdown = post_data[:markdown].to_i.zero? ? 0 : 1
+    @post.published = post_data[:published].to_i.zero? ? false : true
 
     if @post.save
       redirect_to posts_path
@@ -81,11 +93,12 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find_by(permalink: params[:id] || params[:post][:permalink] )
+    permalink = params[:id] || params[:post][:permalink]
+    @post = Post.find_by(permalink: permalink )
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :tags)
+    params.require(:post).permit(:title, :body, :tags, :markdown, :published)
   end
 
   # 'Превед медвеД!!!?' -> 'Preved_medveD!!!'
@@ -95,24 +108,15 @@ class PostsController < ApplicationController
     "#{Time.now.to_i}_#{escaped_title}"
   end
 
-  def get_tags
-    map = %Q{
-      function(){
-        this.tags.forEach(function(z){
-          emit(z,1)
-        })
-      }
-    }
-    reduce = %Q{
-      function (key,values){
-        var total=0;
-        for(var i=0;i<values.length;i++){
-          total += values[i];
-        };
-        return total;
-      }
-    }
-    Post.where(:tags.exists=>true).map_reduce(map,reduce).out(inline: true)
+  def set_page_info
+    num_pages = Post.num_pages(PER_PAGE, params[:tag])
+    n_skip = 0
+    page = params[:page].to_i
+    redirect_to posts_path if (page > num_pages || page < 0)
+    page = 1 if page.zero?
+    @next_page = {page: page + 1}.merge(tag) if page < num_pages
+    @prev_page = {page: page-1}.merge(tag) if page > 1
+    n_skip = (page-1) * PER_PAGE
   end
 
 end
