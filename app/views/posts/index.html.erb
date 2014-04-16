@@ -2,6 +2,7 @@
   <div id='tags'>
     <ul>
       <p><%= link_to "Все посты", posts_path %></p>
+      <hr>
       <% @tags.each do |tag| %>
         <li><%= link_to "##{tag['_id']} (#{tag['value'].to_i})", posts_path(tag: tag['_id']) %></li>
       <% end %>

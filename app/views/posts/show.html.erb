@@ -7,9 +7,11 @@
       Добавлен: <%= pubdate(@post) %>
       <% if session[:user_name] %> 
         | <%= link_to 'Редактировать', edit_post_path(@post) %> | 
-        <%= link_to 'Удалить', @post, method: 'DELETE' %>
+        <%= link_to 'Удалить', @post, method: 'DELETE', data:{confirm: 'Вы уверены?'} %>
       <% end %>
     </div>
+
+    <hr/>
 
     <div class='post_body'><%= raw @post.get_body %></div>
 
@@ -20,7 +22,9 @@
 
     <h3>Комментарии:</h3>
 
-    <div id='comments'>
+    <a href='#new_comment'>Добавить комментарий</a>
+
+    <div>
       <% @post.comments.each do |comment| %>
         <hr/>
         <div class='comment'>
@@ -34,7 +38,3 @@
 
   </div>  
 </div>
-
-<script type="text/javascript">
-  hljs.initHighlightingOnLoad()
-</script>

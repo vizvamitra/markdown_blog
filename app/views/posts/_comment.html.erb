@@ -1,4 +1,4 @@
-<%= form_for [@post, @comment] do |f| %>
+<%= form_for [@post, @comment], html: {name: 'new_comment'} do |f| %>
   <% if @comment.errors.any? %>
     <div id="errorExplanation">
       <% @comment.errors.full_messages.each do |msg| %>

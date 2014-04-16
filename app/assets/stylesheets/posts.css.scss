@@ -41,8 +41,12 @@
   #tags{
     padding: 1%;
     float:right;
-    width:16%;
-    ul{list-style-type:circle;}
+    width:15%;
+    margin: 1% 1% 1% 0;
+    ul{
+      list-style-type:none;
+      padding:0
+    }
   }
 }
 
@@ -58,12 +62,12 @@
   display: inline;
 }
 
-.post, #post{
+.post, #post, #tags{
   box-shadow: 2px 2px 5px #000;
   background-color: rgba(0,0,0,0.4);
 
   a{ 
-    color: #ccc;
+    color: #ddd;
     text-shadow: 0 0 2px #000;
   }
   a:hover{
@@ -83,10 +87,14 @@
     text-shadow: 0 0 2px #000;    
     margin-bottom: 1%;
 
+    p {
+      margin-bottom: 1%;
+    }
+
     :not(pre) code{
       background-color: black;
       color: white;
-      padding: 1px;
+      padding: 1px 3px;
       display: inline-block;
       margin: 1px;
     }
@@ -139,6 +147,13 @@
     color: white !important;
   }
 
+  #post_title:focus, #post_body_div:focus, #post_tags:focus{
+    box-shadow:
+      2px 2px 8px #000,
+      inset 0 0 5px #888;
+    outline:none;
+  }
+
   #post_title{
     width: 99%;
     border: none;
@@ -151,6 +166,10 @@
   }
 
   #post_body{
+    display:none;
+  }
+
+  #post_body_div{
     width: 99%;
     border: none;
     padding: 0.5%;
@@ -160,6 +179,8 @@
     text-shadow: 0 0 2px #000;
     box-shadow: 2px 2px 8px #000;
     overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   #post_tags{
@@ -202,7 +223,7 @@ pre{
 
   textarea{
     resize: none;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgb(0,0,0);
     color: white;
     width: 98%;
     height: 98%;
@@ -211,15 +232,24 @@ pre{
   }
 }
 
+// Comments
+.new_comment{
+  
+}
+
 @media screen and (max-width: 700px){
   #tags{
-    width: 98% !important;
-
+    width: 96% !important;
+    hr{display:none;}
     ul li{
       display: inline;
     }
   }
   #posts{
     width:98% !important;
+  }
+
+  #post, .post, #tags{
+    background-color:rgb(100,100,100)
   }
 }

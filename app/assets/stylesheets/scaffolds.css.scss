@@ -14,9 +14,6 @@ p, ol, ul, td {
 a {
   color: #000;
   transition:0.3s;
-  &:visited {
-    color: #000;
-  }
   &:hover {
      color: #fff;
      transition:0.3s;

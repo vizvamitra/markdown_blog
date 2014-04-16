@@ -7,9 +7,12 @@
     </div>
   <% end %>
 
+  <div id='error'></div>
+
   <%= f.hidden_field :permalink, value: @post.permalink %>
   <%= f.text_field :title, placeholder: "Тема" %><br/>
-  <%= f.text_area :body %><br/>
+  <%= f.text_area :body %>
+  <div id='post_body_div' contenteditable></div><br/>
   <%= f.check_box :markdown %>
   <%= f.label :Markdown %> (<a href='' id='show_markdown_help'>подсказка</a>)<br/>
   <%= f.check_box :published %>

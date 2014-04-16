@@ -8,6 +8,10 @@
       <%= link_to "Черновики", drafts_path %>
     <% end %>
 
+    <% if @posts.empty? %>
+      <div class='post'><span class='info'>Нет ни одного черновика</span></div>
+    <% end %>
+
     <% @posts.each do |post| %>
       <hr/>
       <div class='post'>
@@ -17,7 +21,7 @@
           Добавлен: <%= pubdate(post) %>
           <% if session[:user_name] %> 
             | <%= link_to 'Редактировать', edit_post_path(post) %> | 
-            <%= link_to 'Удалить', post, method: 'DELETE', confirm: "Вы уверены?" %>
+            <%= link_to 'Удалить', post, method: 'DELETE', data: {confirm: "Вы уверены?"} %>
           <% end %>
         </span>)
 
