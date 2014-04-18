@@ -69,10 +69,8 @@ test:
         retry_interval: 0
 production:
   hosts:
-    - horrible
-      port:27017
-    - raumarepola
-      port:27018
+    - horrible:27017
+    - raumarepola:27018
   database: <%= ENV['MONGOID_DATABASE'] %>
   username: <%= ENV['MONGOID_USERNAME'] %>
   password: <%= ENV['MONGOID_PASSWORD'] %>
@@ -80,9 +78,7 @@ production:
     default:
       database: <%= ENV['MONGOID_DATABASE'] %>
       hosts:
-        - horrible
-          port:27017
-        - raumarepola
-          port:27018
+        - horrible:27017
+        - raumarepola:27018
       options:
   options:
