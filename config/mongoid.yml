@@ -78,5 +78,7 @@ production:
     default:
       database: <%= ENV['MONGOID_DATABASE'] %>
       hosts:
-        - horrible:27017
-        - raumarepola:27018
+        - - horrible:27017
+        - - raumarepola:27018
+      options:
+  options:
