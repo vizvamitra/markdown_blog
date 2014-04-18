@@ -14,3 +14,4 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /app/assets/images/background*
+!/app/assets/images/background_2_bright_low.jpg
