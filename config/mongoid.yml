@@ -71,14 +71,14 @@ production:
   hosts:
     - horrible:27017
     - raumarepola:27018
-  database: <%= ENV['MONGOID_DATABASE'] %>
   username: <%= ENV['MONGOID_USERNAME'] %>
   password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
   sessions:
     default:
-      database: <%= ENV['MONGOID_DATABASE'] %>
       username: <%= ENV['MONGOID_USERNAME'] %>
       password: <%= ENV['MONGOID_PASSWORD'] %>
+      database: <%= ENV['MONGOID_DATABASE'] %>
       hosts:
         - horrible:27017
         - raumarepola:27018
