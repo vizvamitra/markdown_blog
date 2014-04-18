@@ -13,5 +13,5 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
+/tmp/*
 /app/assets/images/background*

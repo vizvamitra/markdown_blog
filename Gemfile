@@ -5,7 +5,7 @@ gem 'rails', '4.0.4'
 
 # Mongoid and stuff
 gem 'mongoid', '4.0.0.beta1', github: 'mongoid/mongoid'
-gem 'bson_ext'
+gem 'bson_ext', '~> 1.5.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -41,10 +41,10 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
 # Markdown
-gem 'rdiscount'
+gem 'rdiscount', '~> 2.1.7'

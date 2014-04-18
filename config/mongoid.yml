@@ -67,3 +67,12 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+production:
+  hosts:
+    - - horrible
+      - 27017
+    - - raumarepola
+      - 27018
+  database: <%= ENV['MONGOID_DATABASE'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
