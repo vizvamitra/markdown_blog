@@ -1,0 +1,451 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+/* line 1, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+h1, h2, h3, h4, h5, h6, p, pre, ul, body {
+  padding: 0;
+  margin: 0;
+  word-wrap: normal;
+}
+
+/* line 7, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+html, body {
+  height: 100%;
+  overflow: auto;
+  background: url("/assets/background_2_bright_low.jpg") no-repeat;
+  /*background: url('/assets/background_7.jpg') no-repeat;*/
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: left;
+}
+
+/* line 17, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+#wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: -3.3em auto -3em;
+}
+/* line 23, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+#wrapper #buffer_top {
+  height: 3.3em;
+}
+/* line 24, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+#wrapper #buffer_bottom {
+  height: 3em;
+}
+
+/* line 27, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+header {
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: none;
+}
+/* line 31, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+header a {
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-decoration: none;
+  height: 100%;
+  padding: 0.8em;
+  width: auto;
+  text-align: center;
+  border-right: 1px solid #606060;
+  transition: 0.4s;
+  -moz-transition: 0.4s;
+}
+/* line 45, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+header a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* line 48, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+#main {
+  overflow: auto;
+  margin: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  max-width: 1100px;
+}
+
+/* line 56, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+  width: 100%;
+  height: 3em;
+}
+/* line 62, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+footer span {
+  font-size: 1em;
+  padding: 0.8em;
+  float: right;
+  color: white;
+}
+/* line 69, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+footer a {
+  color: #646464;
+}
+
+@media screen and (max-width: 700px) {
+  /* line 73, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/layout.css.scss */
+  html, body {
+    background-color: white !important;
+    background-image: none;
+  }
+}
+/* line 5, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog {
+  margin: 1em auto;
+  overflow: auto;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 8px #000;
+}
+/* line 13, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog a:hover {
+  color: rgba(50, 50, 50, 0.5);
+}
+/* line 14, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog hr {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+/* line 16, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog #posts, #blog #drafts {
+  padding: 1%;
+  overflow: auto;
+}
+/* line 20, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog #posts #page_links, #blog #drafts #page_links {
+  width: 100%;
+  text-align: center;
+}
+/* line 25, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog #posts h1:first-of-type, #blog #drafts h1:first-of-type {
+  text-align: center;
+  padding: 1%;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 5px #000;
+  color: white;
+  text-shadow: 0 0 2px #000;
+  margin-bottom: 1%;
+}
+/* line 36, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog #posts {
+  float: left;
+  width: 80%;
+}
+/* line 41, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog #tags {
+  padding: 1%;
+  float: right;
+  width: 15%;
+  margin: 1% 1% 1% 0;
+}
+/* line 46, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#blog #tags ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* line 53, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post, #login, #new_post, #edit_post {
+  padding: 1%;
+}
+
+/* line 57, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#posts .info, .post .info {
+  margin-bottom: 1%;
+}
+
+/* line 61, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#drafts .post h3:first-of-type {
+  display: inline;
+}
+
+/* line 65, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post, #post, #tags {
+  box-shadow: 2px 2px 5px #000;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+/* line 69, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post a, #post a, #tags a {
+  color: #ddd;
+  text-shadow: 0 0 2px #000;
+}
+/* line 73, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post a:hover, #post a:hover, #tags a:hover {
+  color: white !important;
+}
+/* line 77, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post .info, #post .info, #tags .info {
+  font-size: 0.9em;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+}
+/* line 83, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post .post_body, #post .post_body, #tags .post_body {
+  font-size: 1.1em;
+  padding: 1%;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  margin-bottom: 1%;
+}
+/* line 90, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post .post_body p, #post .post_body p, #tags .post_body p {
+  margin-bottom: 1%;
+}
+/* line 94, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post .post_body :not(pre) code, #post .post_body :not(pre) code, #tags .post_body :not(pre) code {
+  background-color: black;
+  color: white;
+  padding: 1px 3px;
+  display: inline-block;
+  margin: 1px;
+}
+/* line 102, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post .post_body pre code, #post .post_body pre code, #tags .post_body pre code {
+  padding: 0.7em;
+  margin: 0.7em auto;
+  box-shadow: inset 0 0 2px #8af;
+}
+/* line 108, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post .post_body blockquote, #post .post_body blockquote, #tags .post_body blockquote {
+  border-left: 4px solid rgba(0, 0, 0, 0.8);
+}
+
+/* line 114, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post {
+  margin-top: 2%;
+}
+/* line 117, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post a.to_comments {
+  font-size: 1.1em;
+}
+
+/* line 122, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#post {
+  margin: 1%;
+  padding: 1%;
+}
+/* line 126, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#post h3 {
+  color: white;
+  text-shadow: 0 0 2px #000;
+}
+
+/* line 129, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#comments {
+  padding: 1%;
+}
+
+/* line 133, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form {
+  margin-top: 1%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1%;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  box-shadow: 2px 2px 8px #000;
+  margin-bottom: 1%;
+}
+/* line 142, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form a {
+  color: #ccc !important;
+  text-shadow: 0 0 2px #000;
+}
+/* line 146, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form a:hover {
+  color: white !important;
+}
+/* line 150, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form #post_title:focus, .post_form #post_body_div:focus, .post_form #post_tags:focus {
+  box-shadow: 2px 2px 8px #000, inset 0 0 5px #888;
+  outline: none;
+}
+/* line 157, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form #post_title {
+  width: 99%;
+  border: none;
+  padding: 0.5%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  box-shadow: 2px 2px 8px #000;
+  margin-bottom: 1%;
+}
+/* line 168, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form #post_body {
+  display: none;
+}
+/* line 172, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form #post_body_div {
+  width: 99%;
+  border: none;
+  padding: 0.5%;
+  min-height: 300px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  box-shadow: 2px 2px 8px #000;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+/* line 186, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form #post_tags {
+  width: 99%;
+  border: none;
+  padding: 0.5%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  box-shadow: 2px 2px 8px #000;
+}
+/* line 195, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+.post_form input[type=submit] {
+  margin-top: 1%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  text-shadow: 0 0 2px #000;
+  box-shadow: 2px 2px 8px #000;
+  padding: 1%;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin: 1% 0 0 0;
+}
+
+/* line 210, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* line 215, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#markdown_help {
+  display: none;
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+}
+/* line 224, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+#markdown_help textarea {
+  resize: none;
+  background-color: black;
+  color: white;
+  width: 98%;
+  height: 98%;
+  border: none;
+  padding: 1%;
+}
+
+@media screen and (max-width: 700px) {
+  /* line 241, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+  #tags {
+    width: 96% !important;
+  }
+  /* line 243, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+  #tags hr {
+    display: none;
+  }
+  /* line 244, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+  #tags ul li {
+    display: inline;
+  }
+
+  /* line 248, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+  #posts {
+    width: 98% !important;
+  }
+
+  /* line 252, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/posts.css.scss */
+  #post, .post, #tags {
+    background-color: #646464;
+  }
+}
+/* line 1, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #111;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  line-height: 18px;
+}
+
+/* line 14, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+  transition: 0.3s;
+}
+/* line 17, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  transition: 0.3s;
+}
+
+/* line 24, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 29, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 33, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 39, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 46, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 56, /home/vizvamitra/work/rails/midispot/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
