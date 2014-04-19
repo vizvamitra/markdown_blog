@@ -32,7 +32,7 @@
           <% end %>
         </div>
 
-        <div class='post_body'><%= raw post.get_body %></div>
+        <div class='post_body'><%= raw preview(post) %></div>
 
         <% if post.tags %>
           <div class='tags'>

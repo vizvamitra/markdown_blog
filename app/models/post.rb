@@ -19,8 +19,18 @@ class Post
     self.permalink
   end
 
-  def get_body
-    self.markdown.to_i.zero? ? self.body : RDiscount.new(self.body).to_html
+  def get_body(**attrs)
+    text = prepare(self.body)
+    text.sub(/\s*\[more\].*\[\/more\]\s*/, '') if  attrs[:strip_more]
+  end
+
+  def get_preview
+    regex = /(.*)\[more\](.*)\[\/more\]/m
+    match = regex.match(self.body)
+    preview, more = match ? [match[1], match[2]] : [self.body, nil]
+    p preview
+
+    [ prepare(preview), more ]
   end
 
   def self.num_pages(per_page, tag=nil)
@@ -49,5 +59,11 @@ class Post
     }
     tags = self.where(:tags.exists=>true).map_reduce(map,reduce).out(inline: true)
     tags.sort{|t1,t2| t1['_id'] <=> t2['_id']}
+  end
+
+  private
+
+  def prepare str
+    self.markdown.to_i.zero? ? str.gsub(/\n/,'<br/>') : RDiscount.new(str).to_html
   end
 end

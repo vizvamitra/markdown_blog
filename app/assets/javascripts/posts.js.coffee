@@ -20,6 +20,10 @@ $(document).on 'page:change', ->
     if e.keyCode == 9 # Tab
       e.preventDefault()
       $(this).paste_in_position('    ')
+    # Submit post form on ctrl+s
+    if e.ctrlKey && e.which == 83 # ctrl+s
+      e.preventDefault()
+      $('.post_form input[type=submit]').trigger('click')
 
   # Form submition
   $('.post_form input[type=submit]').click (e) ->
