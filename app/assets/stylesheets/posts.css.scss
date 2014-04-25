@@ -43,6 +43,8 @@
     float:right;
     width:15%;
     margin: 1% 1% 1% 0;
+    word-break: break-all;
+
     ul{
       list-style-type:none;
       padding:0
@@ -242,10 +244,9 @@ pre{
 @media screen and (max-width: 700px){
   #tags{
     width: 96% !important;
+    word-break: normal !important;
     hr{display:none;}
-    ul li{
-      display: inline;
-    }
+    ul li{display: inline;}
   }
   #posts{
     width:98% !important;

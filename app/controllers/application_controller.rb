@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized?
-    session[:user_name]
+    session[:user_name] ? true : false
   end
 end

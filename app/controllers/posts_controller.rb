@@ -7,16 +7,9 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    filter = {published: true}
+    # set page info, get filter and number of pages
+    n_skip, filter = set_page_info({published: true})
 
-    # processing tag if given
-    tag = {}
-    if params[:tag]
-      filter.merge!({tags: params[:tag]})
-      tag = {tag: params[:tag]}
-    end
-
-    n_skip = set_page_info
     @posts = Post.where(filter).order_by([:created_at, :desc]).limit(PER_PAGE).skip(n_skip)
 
     @tags = Post.get_tags
@@ -24,8 +17,7 @@ class PostsController < ApplicationController
 
   # GET /posts/drafts
   def drafts
-    filter = {author: session[:user_name], published: false}
-    n_skip = set_page_info
+    n_skip, filter = set_page_info({author: session[:user_name], published: false})
     @posts = Post.where(filter).order_by([:created_at, :desc]).limit(PER_PAGE).skip(n_skip)
   end
 
@@ -42,6 +34,7 @@ class PostsController < ApplicationController
 
   # GET /posts/:permalink/edit
   def edit
+    redirect_to posts_path unless is_author?(@post)
   end
 
   # POST /posts
@@ -67,6 +60,8 @@ class PostsController < ApplicationController
 
   # PATCH /posts/:permalink
   def update
+    redirect_to posts_path unless is_author?(@post)
+
     post_data = post_params
     @post.attributes = {
       title: post_data[:title],
@@ -86,6 +81,8 @@ class PostsController < ApplicationController
 
   # DELETE /posts/:permalink
   def destroy
+    redirect_to posts_path unless is_author?(@post)
+
     @post.destroy
     redirect_to posts_path
   end
@@ -108,7 +105,13 @@ class PostsController < ApplicationController
     "#{Time.now.to_i}_#{escaped_title}"
   end
 
-  def set_page_info
+  def set_page_info(filter)
+    tag = {}
+    if params[:tag]
+      filter.merge!({tags: params[:tag]})
+      tag = {tag: params[:tag]}
+    end
+
     num_pages = Post.num_pages(PER_PAGE, params[:tag])
     n_skip = 0
     page = params[:page].to_i
@@ -117,6 +120,11 @@ class PostsController < ApplicationController
     @next_page = {page: page + 1}.merge(tag) if page < num_pages
     @prev_page = {page: page-1}.merge(tag) if page > 1
     n_skip = (page-1) * PER_PAGE
+    [n_skip, filter]
+  end
+
+  def is_author?(post)
+    session[:user_name] == post.author
   end
 
 end

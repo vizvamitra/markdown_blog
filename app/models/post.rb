@@ -43,8 +43,8 @@ class Post
   def self.get_tags
     map = %Q{
       function(){
-        this.tags.forEach(function(z){
-          emit(z,1)
+        this.tags.forEach(function(z){          
+          emit(z,1);
         })
       }
     }
@@ -57,7 +57,7 @@ class Post
         return total;
       }
     }
-    tags = self.where(:tags.exists=>true).map_reduce(map,reduce).out(inline: true)
+    tags = self.where(:tags.exists=>true, published: true).map_reduce(map,reduce).out(inline: true)
     tags.sort{|t1,t2| t1['_id'] <=> t2['_id']}
   end
 

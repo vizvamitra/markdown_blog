@@ -26,7 +26,7 @@
         <div class='info'>
           Автор: <%= post.author.capitalize %> |
           Добавлен: <%= pubdate(post) %>
-          <% if session[:user_name] %> 
+          <% if session[:user_name] == post.author %> 
             | <%= link_to 'Редактировать', edit_post_path(post) %> | 
             <%= link_to 'Удалить', post, method: 'DELETE', data: {confirm: "Вы уверены?"} %>
           <% end %>

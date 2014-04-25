@@ -6,8 +6,14 @@ $(document).on 'page:change', ->
   # Highlight
   $('pre code').each (i, e) ->
     hljs.highlightBlock(e)
+
   # Text from textarea to div
   $('#post_body_div').text($('#post_body').val())
+
+  # Focus on post body area
+  if ($('.post_form'))
+    $('#post_body_div').focus()
+
   # Keybord events
   $('#post_body_div').keydown (e) ->
     # Newline at 'Enter' press
@@ -21,7 +27,7 @@ $(document).on 'page:change', ->
       e.preventDefault()
       $(this).paste_in_position('    ')
     # Submit post form on ctrl+s
-    if e.ctrlKey && e.which == 83 # ctrl+s
+    if e.ctrlKey && e.which == 83 # Ctrl+s
       e.preventDefault()
       $('.post_form input[type=submit]').trigger('click')
 
@@ -38,9 +44,7 @@ $(document).on 'page:change', ->
     else
       form.find('#post_body').val(body)
       form.submit()
-  # Focus on post body area
-  if ($('.post_form'))
-    $('#post_body_div').focus()
+  
   # Showing/hiding markdown help div
   $('#show_markdown_help').click (e) ->
     e.preventDefault()
